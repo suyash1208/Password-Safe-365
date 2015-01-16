@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="safePassword">
+  <head>
+      <script src="lib/jquery.js"></script>
+      <script src="aes.js"></script>
+      <script src="lib/angular.js"></script>
+      <script src="lib/ui-bootstrap-tpls-0.12.0.js"></script>
+      <script src="example.js"></script>
+      <link href="lib/bootstrap.css" rel="stylesheet">
+  </head>
+  <body>
+
+<div ng-controller="safePasswordCtrl">
+
+  <ul>
+      <li style="margin: 5px" ng-repeat="userData in userDataList">
+          Name: <input type="text" style="margin: 2px" ng-model="userData.name"/></br>
+          Password: <input type="text" ng-show="userData.showPassword" style="margin: 2px" ng-model="userData.value"/>
+          <input type="text" ng-disabled="true" ng-hide="userData.showPassword" style="margin: 2px" ng-model="passwordStar"/> <button  ng-click="userData.showPassword = !userData.showPassword">show</button></br>
+          Other: <input type="text" style="margin: 2px" ng-model="userData.other"/>
+      </li>
+  </ul>
+
+  <button class='btn btn-default' ng-click="more()">More</button>
+
+  </br></br>
+
+  Plain Text: <input type="text" ng-model="plainText"/>
+  </br>
+    <button class='btn btn-default' ng-click="encrypt()">Encrypt</button>
+    <span style="background-color: firebrick">{{encrypted}}</span>
+    </br></br>
+    <button class='btn btn-default' ng-click="decrypt()">Decrypt</button>
+    <span style="background-color: firebrick">{{decrypted}}</span>
+
+</div>
+  </body>
+</html>
